@@ -44,7 +44,6 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 1rem);
 }
 
 body {
@@ -1011,341 +1010,34 @@ html.dark .contact-form textarea:focus {
   animation: none !important;
 }
 
-/* ─── EDITORIAL PORTFOLIO UPGRADE ─────────────────────────── */
-:root {
-  --editorial-ring: 0 0 0 1px var(--border), 0 24px 80px rgba(31,26,22,0.08);
-}
-
-html.dark {
-  --editorial-ring: 0 0 0 1px var(--border), 0 24px 80px rgba(0,0,0,0.35);
-}
-
-body {
-  background:
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 45%, var(--bg) 100%);
-}
-
-.nav-brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border: 1px solid var(--border-mid);
-  border-radius: 50%;
-  background: var(--surface);
+/* ─── MATCH SERVICE CARDS + KEEP ANIMATION ───────────────────
+   Makes all 3 service cards use the same color style.
+   The GSAP scroll reveal in script.js still handles the entrance animation.
+*/
+.svc-card,
+.svc-card--featured {
+  background: var(--surface) !important;
+  color: var(--ink) !important;
+  border-color: var(--border) !important;
   box-shadow: var(--shadow-card);
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease;
 }
 
-.hero {
-  min-height: calc(100vh - var(--nav-h));
+.svc-card p,
+.svc-card .svc-num,
+.svc-card--featured p,
+.svc-card--featured .svc-num {
+  color: var(--ink-muted) !important;
 }
 
-.hero-left {
-  position: relative;
-  z-index: 2;
+.svc-card:hover,
+.svc-card--featured:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lift);
+  background: var(--bg-alt) !important;
 }
 
-.hero h1 {
-  max-width: 8.5ch;
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
-
-.hero-sub {
-  max-width: 44ch;
-}
-
-.hero-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-top: 1.35rem;
-}
-
-.hero-trust span {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.38rem 0.75rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
-  color: var(--ink-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.hero-trust span::before {
-  content: "";
-  width: 0.35rem;
-  height: 0.35rem;
-  border-radius: 50%;
-  background: var(--accent-warm);
-}
-
-.code-card {
-  position: relative;
-}
-
-.code-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  background: linear-gradient(135deg, rgba(255,255,255,0.34), transparent 32%, var(--accent-soft));
-  opacity: 0.7;
-}
-
-.section-head--split {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
-  gap: 2rem;
-  align-items: end;
-}
-
-.section-intro {
-  margin: 0;
-  color: var(--ink-muted);
-  max-width: 44ch;
-  line-height: 1.75;
-}
-
-.project-list--visual {
-  gap: 1.25rem;
-}
-
-.project-card {
-  grid-template-columns: minmax(240px, 0.82fr) minmax(0, 1.1fr) auto;
-  align-items: stretch;
-  gap: 1.35rem;
-  padding: 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface) 84%, transparent);
-  box-shadow: var(--shadow-card);
-  overflow: hidden;
-}
-
-.project-card:first-child {
-  border-top: 1px solid var(--border);
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  background: var(--surface);
-  padding: 1.1rem;
-  box-shadow: var(--editorial-ring);
-}
-
-.project-content {
-  display: grid;
-  gap: 0.85rem;
-  align-content: center;
-  min-width: 0;
-}
-
-.project-card .project-meta {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.75rem;
-  padding-top: 0;
-}
-
-.project-card .project-body p {
-  max-width: 58ch;
-}
-
-.project-card .project-links {
-  align-self: center;
-  padding-top: 0;
-}
-
-.project-preview {
-  min-height: 210px;
-  border-radius: calc(var(--radius-md) + 0.2rem);
-  padding: 1rem;
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  border: 1px solid var(--border-mid);
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.36), transparent 30%),
-    linear-gradient(135deg, var(--accent-soft), rgba(224,122,62,0.12));
-}
-
-.preview-business {
-  background:
-    radial-gradient(circle at 80% 15%, rgba(255,255,255,0.38), transparent 28%),
-    linear-gradient(135deg, rgba(224,122,62,0.16), var(--accent-soft));
-}
-
-.preview-form {
-  background:
-    radial-gradient(circle at 40% 18%, rgba(255,255,255,0.36), transparent 26%),
-    linear-gradient(135deg, rgba(58,158,116,0.15), var(--accent-soft));
-}
-
-.mock-browser {
-  width: min(100%, 320px);
-  border-radius: 1.15rem;
-  overflow: hidden;
-  background: var(--surface);
-  border: 1px solid var(--border-mid);
-  box-shadow: 0 18px 50px rgba(31,26,22,0.16);
-  transform: rotate(-2deg);
-}
-
-.preview-business .mock-browser { transform: rotate(2deg); }
-.preview-form .mock-browser { transform: rotate(-1deg); }
-
-.mock-topbar {
-  height: 2.05rem;
-  display: flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0 0.85rem;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-alt);
-}
-
-.mock-topbar span {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--ink-faint);
-}
-
-.mock-screen {
-  min-height: 142px;
-  padding: 1rem;
-}
-
-.mock-badge,
-.mock-title,
-.mock-line,
-.mock-pill-row span,
-.mock-card,
-.mock-input,
-.mock-textarea,
-.mock-button {
-  border-radius: 999px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-}
-
-.mock-badge { width: 42%; height: 0.8rem; margin-bottom: 0.7rem; background: var(--accent-soft); }
-.mock-title { width: 70%; height: 1.05rem; margin-bottom: 0.55rem; background: var(--ink); opacity: 0.18; }
-.mock-title--wide { width: 88%; }
-.mock-line { width: 92%; height: 0.55rem; margin-bottom: 0.45rem; }
-.mock-line--short { width: 58%; }
-.mock-pill-row { display: flex; gap: 0.4rem; margin-top: 0.9rem; }
-.mock-pill-row span { width: 4.6rem; height: 1.4rem; background: var(--accent-soft); }
-
-.mock-screen--grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 0.65rem;
-}
-
-.mock-card {
-  min-height: 3.4rem;
-  border-radius: 0.85rem;
-}
-
-.mock-card--large {
-  grid-row: span 3;
-  min-height: 8.9rem;
-  background: linear-gradient(135deg, var(--accent-soft), rgba(224,122,62,0.12));
-}
-
-.mock-screen--form {
-  display: grid;
-  gap: 0.65rem;
-}
-
-.mock-input { height: 1.75rem; border-radius: 0.65rem; }
-.mock-textarea { height: 4.3rem; border-radius: 0.85rem; }
-.mock-button { width: 48%; height: 1.85rem; background: linear-gradient(135deg, var(--accent), var(--accent-warm)); border: none; }
-
-.process-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.1rem;
-}
-
-.process-card {
-  padding: 1.6rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: color-mix(in srgb, var(--surface) 86%, transparent);
-  box-shadow: var(--shadow-card);
-}
-
-.process-card span {
-  font-family: var(--ff-display);
-  font-size: 1.1rem;
-  font-style: italic;
-  color: var(--accent-warm);
-}
-
-.process-card h3 {
-  margin: 0.85rem 0 0.5rem;
-  font-size: 1.08rem;
-}
-
-.process-card p {
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: 0.95rem;
-}
-
-.contact {
-  position: relative;
-}
-
-.contact-inner {
-  padding: 2rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  background: color-mix(in srgb, var(--surface) 82%, transparent);
-  box-shadow: var(--shadow-card);
-}
-
-@media (max-width: 900px) {
-  .section-head--split,
-  .project-card,
-  .process-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card .project-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-self: start;
-  }
-
-  .project-preview {
-    min-height: 190px;
-  }
-
-  .contact-inner {
-    padding: 1.4rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-trust span {
-    font-size: 0.78rem;
-  }
-
-  .project-card:hover {
-    padding: 1.1rem;
-  }
-
-  .mock-browser {
-    transform: none !important;
-  }
-}

@@ -105,35 +105,6 @@ if (hamburger && mobileMenu) {
   });
 }
 
-
-// ─── SMOOTH SCROLL WITH NAV OFFSET ───────────────────────────
-const anchorLinks = document.querySelectorAll('a[href^="#"]');
-
-anchorLinks.forEach((link) => {
-  link.addEventListener('click', (event) => {
-    const href = link.getAttribute('href');
-
-    if (!href || href === '#') return;
-
-    const target = document.querySelector(href);
-    if (!target) return;
-
-    event.preventDefault();
-
-    const navHeight = document.getElementById('nav')?.offsetHeight || 0;
-    const extraGap = 16;
-    const targetTop = target.getBoundingClientRect().top + window.scrollY - navHeight - extraGap;
-
-    window.scrollTo({
-      top: targetTop,
-      behavior: 'smooth'
-    });
-
-    history.pushState(null, '', href);
-    closeMobileMenu?.();
-  });
-});
-
 // ─── CONTACT FORM FEEDBACK ───────────────────────────────────
 // IMPORTANT:
 // Do NOT use e.preventDefault() here because your form uses Netlify.
@@ -221,7 +192,7 @@ if (window.gsap && window.ScrollTrigger) {
   });
 
   // Services cards reveal
-  gsap.utils.toArray(".svc-card, .process-card").forEach((card, index) => {
+  gsap.utils.toArray(".svc-card").forEach((card, index) => {
     gsap.from(card, {
       opacity: 0,
       y: 55,
@@ -251,7 +222,9 @@ if (window.gsap && window.ScrollTrigger) {
     });
   });
 
-  // Hero right visual scroll effect
+  // Safe hero scroll effect
+  // Keep the title readable. Do not fade it down to 0.35 opacity.
+
   gsap.to(".hero-right", {
     y: -28,
     scale: 1.01,
