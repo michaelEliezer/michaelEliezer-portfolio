@@ -4,7 +4,7 @@ My personal frontend developer portfolio built with HTML, CSS, and JavaScript.
 
 ## Live Site
 
-https://michaeleliezer.github.io/luna-frames-photography/
+ https://michaeleliezer.github.io/michaelEliezer-portfolio/
 
 ## Built With
 
