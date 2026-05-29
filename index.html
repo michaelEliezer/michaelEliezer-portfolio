@@ -3,18 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Michael Eliezer — Frontend Developer</title>
+  <title>Michael Panjaitan — Frontend Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="intro-active">
+  <!-- CINEMATIC SLIDESHOW INTRO -->
+  <div class="cinematic-intro" id="cinematicIntro" aria-hidden="false">
+    <button type="button" class="intro-skip" id="introSkip" aria-label="Skip cinematic intro">Skip</button>
+
+    <div class="cinematic-slide active" data-slide="0">
+      <div class="slide-visual slide-visual--orb" aria-hidden="true">
+        <div class="gold-orbit gold-orbit--one"></div>
+        <div class="gold-orbit gold-orbit--two"></div>
+        <div class="gold-core"></div>
+      </div>
+      <div class="slide-copy">
+        <p class="slide-kicker">Frontend Portfolio</p>
+        <h2>Michael Panjaitan</h2>
+        <span>Clean websites with a premium feel.</span>
+      </div>
+    </div>
+
+    <div class="cinematic-slide" data-slide="1">
+      <div class="slide-visual slide-visual--layout" aria-hidden="true">
+        <div class="layout-frame">
+          <span></span><span></span><span></span>
+          <strong></strong><strong></strong><strong></strong>
+        </div>
+      </div>
+      <div class="slide-copy">
+        <p class="slide-kicker">Design System</p>
+        <h2>Structure before decoration.</h2>
+        <span>Responsive sections, clear spacing, and focused layout.</span>
+      </div>
+    </div>
+
+    <div class="cinematic-slide" data-slide="2">
+      <div class="slide-visual slide-visual--launch" aria-hidden="true">
+        <div class="launch-panel">
+          <i></i><i></i><i></i>
+          <b></b>
+        </div>
+      </div>
+      <div class="slide-copy">
+        <p class="slide-kicker">Built to Ship</p>
+        <h2>Fast, polished, and ready to show.</h2>
+        <span>HTML, CSS, JavaScript, mobile-first execution.</span>
+      </div>
+    </div>
+  </div>
+
 
   <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#home" class="nav-brand">ME</a>
+      <a href="#home" class="nav-brand" id="brandReplay">Michael<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
@@ -309,7 +355,7 @@
             <span>Remote · Worldwide</span>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xaqkvpqj" method="POST">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xaqkvpqj" method="post">
           <input type="hidden" name="_subject" value="New portfolio contact message" />
           <label>
             Name
@@ -334,7 +380,7 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="footer-inner">
-      <span class="footer-name">Michael Eliezer</span>
+      <span class="footer-name">Michael Panjaitan</span>
       <span class="footer-copy" id="footerYear">© 2025 · Frontend Developer</span>
       <a href="#contact" class="footer-link">Get in touch →</a>
     </div>
